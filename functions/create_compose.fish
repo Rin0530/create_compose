@@ -1,5 +1,5 @@
 function create_compose --description "Create compose.yaml for docker compose v2" --argument-names num image
-  set --local container_name (pwd | sed "s/\/.*\///")
+  set --local container_name (pwd | sed "s/\/.*\///" | string lower)
   if test -f Dockerfile
       set container_image "build: ."
   else if test $image
